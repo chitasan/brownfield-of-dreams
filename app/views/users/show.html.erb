@@ -10,4 +10,15 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <% if current_user.token != nil %>
+    <section class="github_repos">
+      <h1>GitHub</h1>
+      <h3> <%= facade.header %></h3>
+        <% facade.repos_top_five.each do |repo| %>
+        <p class="repo-link">
+        <%= link_to repo.name, repo.link  %><br/>
+        </p>
+      <% end %>
+    </section>
+  <% end %>
 </section>
