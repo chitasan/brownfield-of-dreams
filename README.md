@@ -5,6 +5,7 @@ This is the base repo for a brownfield project used at Turing for Backend Mod 3.
 Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
 
 ### Project Board
+https://cryptic-wave-25571.herokuapp.com/ | https://git.heroku.com/cryptic-wave-25571.git
 
 Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
 

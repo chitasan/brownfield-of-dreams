@@ -37,3 +37,7 @@ Gemfile.lock
 package.json
 public/packs-test/manifest.json
 yarn.lock
+public/packs-test/manifest.json
+public/packs/manifest.json
+yarn.lock
+spec/cassettes/
