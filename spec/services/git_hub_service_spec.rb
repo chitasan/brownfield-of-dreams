@@ -9,13 +9,13 @@ RSpec.describe 'GitHubService' do
   end 
 
   describe 'instance methods' do 
-    xit '.get_repos' do 
+    it '.get_repos' do 
       VCR.use_cassette('services/get_repos') do
         github_user = create(:user, token: ENV["GITHUB_USER_TOKEN"])
         service = GitHubService.new(github_user)
-
+      
         repos = service.get_repos
-
+   
         expect(repos.first).to have_key(:name)
         expect(repos.first).to have_key(:html_url)
         expect(repos.last).to have_key(:name)
