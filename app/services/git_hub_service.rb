@@ -10,8 +10,8 @@ class GitHubService
   private
     def github_conn
       conn = Faraday.new("https://api.github.com/") do |f|
-        # f.headers["Authorization"] = "token #{@user.token}"
-        f.params["access_token"] = @token
+        f.headers["Authorization"] = "token #{@token}"
+        # f.params["access_token"] = @token
         f.adapter Faraday.default_adapter
       end
     end
@@ -19,7 +19,6 @@ class GitHubService
     def get_json(url)
       response = github_conn.get(url)
       data = JSON.parse(response.body, symbolize_names: true)
-      # binding.pry
     end
 
 end
