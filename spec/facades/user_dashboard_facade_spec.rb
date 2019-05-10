@@ -11,7 +11,7 @@ RSpec.describe 'UserDashboardFacade' do
   describe 'instance methods' do 
     it '.header' do 
       VCR.use_cassette('services/get_repos') do
-        github_user = create(:user, token: ENV["GITHUB_USER_TOKEN"])
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         facade = UserDashboardFacade.new(github_user)
 
         expect(facade.header).to eq("5 Repos")
@@ -20,7 +20,7 @@ RSpec.describe 'UserDashboardFacade' do
 
     it '.repos_top_five' do 
       VCR.use_cassette('services/get_repos') do
-        github_user = create(:user, token: ENV["GITHUB_USER_TOKEN"])
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         facade = UserDashboardFacade.new(github_user)
 
         expect(facade.repos_top_five.count).to eq(5)

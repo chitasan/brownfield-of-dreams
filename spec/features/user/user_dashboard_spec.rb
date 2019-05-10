@@ -4,7 +4,7 @@ RSpec.describe 'Registered User' do
   describe 'can see on dashboard' do
     it 'section for Github with 5 repositories' do
       VCR.use_cassette('services/get_repos') do
-        github_user = create(:user, token: ENV["GITHUB_USER_TOKEN"])
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
 
@@ -22,7 +22,7 @@ RSpec.describe 'Registered User' do
 
     it "only user's own repo where then are multiple users in the database" do
       VCR.use_cassette('services/get_repos') do
-        github_user = create(:user, token: ENV["GITHUB_USER_TOKEN"])
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         non_github_user = create(:user, token: nil, first_name: "Chi")
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
         # expect(GitHubService).to receive(:new).with(github_user.token)
