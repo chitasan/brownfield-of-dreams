@@ -11,7 +11,7 @@ RSpec.describe 'GitHubService' do
   describe 'instance methods' do 
     it '.get_repos' do 
       VCR.use_cassette('services/get_repos') do
-        github_user = create(:user, token: ENV["GITHUB_USER_TOKEN"])
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         service = GitHubService.new(github_user)
       
         repos = service.get_repos
