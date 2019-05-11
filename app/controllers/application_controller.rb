@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
-  helper_method :find_bookmark
-  helper_method :list_tags
-  helper_method :tutorial_name
+  helper_method :current_user, :find_bookmark, :list_tags, :tutorial_name, :current_admin?
 
   add_flash_types :success
 
@@ -18,7 +15,10 @@ class ApplicationController < ActionController::Base
     Tutorial.find(id).title
   end
 
-  def four_oh_four
-    raise ActionController::RoutingError.new('Not Found')
+  def current_admin?
+    current_user && current_user.admin?
   end
+  # def four_oh_four
+  #   raise ActionController::RoutingError.new('Not Found')
+  # end
 end
