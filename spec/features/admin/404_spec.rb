@@ -7,3 +7,9 @@ describe "as a user" do
     expect(page).to have_content('404')
   end
 end
+describe "as a visitor" do
+  it "sees a 404 error when trying to access admin pages" do
+    visit '/admin/dashboard'
+    expect(page).to have_content('404')
+  end
+end
