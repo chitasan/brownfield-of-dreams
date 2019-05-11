@@ -7,6 +7,10 @@ class GitHubService
     get_json("user/repos")
   end
 
+  def get_following
+    get_json("/user/following")
+  end
+
   private
     def github_conn
       conn = Faraday.new("https://api.github.com/") do |f|

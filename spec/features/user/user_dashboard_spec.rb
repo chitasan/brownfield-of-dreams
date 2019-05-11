@@ -25,8 +25,6 @@ RSpec.describe 'Registered User' do
         github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         non_github_user = create(:user, token: nil, first_name: "Chi")
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
-        # expect(GitHubService).to receive(:new).with(github_user.token)
-        # expect(GitHubService).to_not receive(:new).with(non_github_user.token)
 
         visit '/dashboard'
         expect(page).to_not have_content(non_github_user.first_name)
@@ -43,6 +41,23 @@ RSpec.describe 'Registered User' do
         expect(page).to have_content(non_github_user.first_name)
         expect(page).to_not have_content("GitHub")
         expect(page).to_not have_content("Repos")
+      end
+    end
+    it "can display the people that the github user is following" do
+      VCR.use_cassette('services/get_following') do
+        #     As a logged in user
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
+        # When I visit /dashboard
+        visit '/dashboard'
+        # Then I should see a section for "Github"
+        expect(page).to have_css('.following')
+        # And under that section I should see another section titled "Following"
+        expect(page).to have_content("Following")
+        # And I should see list of users I follow with their handles linking to their Github profile
+        within(first('.following')) do
+          expect(page).to have_css('.following-link')
+        end
       end
     end
   end
