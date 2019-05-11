@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
-    resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
+    resources :tutorials, only: [:edit, :update, :destroy, :new] do #:create,
       resources :videos, only: [:create]
     end
-    resources :videos, only: [:edit, :update, :destroy]
+    resources :videos, only: [:edit, :update, :create] #:destroy
 
     namespace :api do
       namespace :v1 do
@@ -29,17 +29,14 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: 'users#show'
-  get '/about', to: 'about#show'
-  get '/get_started', to: 'get_started#show'
+  # get '/about', to: 'about#show'
+  # get '/get_started', to: 'get_started#show'
 
-  # Is this being used?
-  get '/video', to: 'video#show'
+  resources :users, only: [:new, :create] #:update, :edit
 
-  resources :users, only: [:new, :create, :update, :edit]
+  resources :tutorials, only: [:show] # , :index
+    # resources :videos, only: [:show, :index]
+  # end
 
-  resources :tutorials, only: [:show, :index] do
-    resources :videos, only: [:show, :index]
-  end
-
-  resources :user_videos, only:[:create, :destroy]
+  resources :user_videos, only:[:create] #:destroy
 end
