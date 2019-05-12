@@ -116,14 +116,5 @@ m3_tutorial.videos.create!({
 })
 
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
-<<<<<<< Updated upstream
-User.create(email: "jennica.stiehl@gmail.com", first_name: "Jennica", last_name: "Stiehl", password: "password", role: "default", created_at: "2019-05-07 13:37:54", updated_at: "2019-05-09 20:46:46", token: ENV['JENNICA_USER_KEY'] )
-User.create(email: "chidtran@gmail.com", first_name: "chi", last_name: "tran", password: "test", role: "default", created_at: "2019-05-09 14:03:07", updated_at: "2019-05-09 20:57:01", token: ENV['CHI_USER_KEY'] ) 
-=======
 User.create(email: "jennica.stiehl@gmail.com", first_name: "Jennica", last_name: "Stiehl", password: "password", role: "default", created_at: "2019-05-07 13:37:54", updated_at: "2019-05-09 20:46:46", token: ENV['JENNICA_USER_TOKEN'] )
-<<<<<<< HEAD
-User.create(email: "chidtran@gmail.com", first_name: "chi", last_name: "tran", password: "test", role: "default", created_at: "2019-05-09 14:03:07", updated_at: "2019-05-09 20:57:01", token: ENV['CHI_USER_TOKEN'] )
-=======
 User.create(email: "chidtran@gmail.com", first_name: "chi", last_name: "tran", password: "test", role: "default", created_at: "2019-05-09 14:03:07", updated_at: "2019-05-09 20:57:01", token: ENV['CHI_USER_TOKEN'] ) 
->>>>>>> 5faad5912e628ed604572f4658bdcc6e734d36f2
->>>>>>> Stashed changes

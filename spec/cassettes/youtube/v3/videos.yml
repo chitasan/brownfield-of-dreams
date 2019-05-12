@@ -22,6 +22,7 @@ http_interactions:
       - Sun, 12 May 2019 21:00:11 GMT
       Date:
       - Sun, 12 May 2019 21:00:11 GMT
+
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -118,4 +119,4 @@ http_interactions:
         }
     http_version: 
   recorded_at: Sun, 12 May 2019 21:00:09 GMT
-recorded_with: VCR 4.0.0
+
