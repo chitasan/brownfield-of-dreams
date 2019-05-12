@@ -45,5 +45,48 @@ RSpec.describe 'Registered User' do
         expect(page).to_not have_content("Repos")
       end
     end
+
+    it 'can see subsection under Github called Following' do
+        VCR.use_cassette('services/get_following') do
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
+
+         visit '/dashboard'
+         expect(page).to have_content('Following')
+
+           within '.following' do
+            expect(page).to have_css('.following-handle')
+            expect(page).to have_css('#following-link')
+          end
+        end
+    end
+
+    it "can display the people that the github user is following" do
+      VCR.use_cassette('services/get_following') do
+        github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
+        visit '/dashboard'
+        expect(page).to have_css('.following')
+        expect(page).to have_content("Following")
+        within(first('.following')) do
+          expect(page).to have_css('#following-link')
+        end
+      end
+    end
+
+    it 'can see subsection under Github called Followers' do 
+      VCR.use_cassette('services/get_followers') do
+      github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
+
+      visit '/dashboard'
+      expect(page).to have_content('Followers')
+
+        within '.followers' do
+          expect(page).to have_css('#follower_handle')
+          expect(page).to have_css('.follower_link')
+        end
+      end 
+    end 
   end
 end
