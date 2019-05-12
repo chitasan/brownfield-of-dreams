@@ -25,8 +25,6 @@ RSpec.describe 'Registered User' do
         github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         non_github_user = create(:user, token: nil, first_name: "Chi")
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
-        # expect(GitHubService).to receive(:new).with(github_user.token)
-        # expect(GitHubService).to_not receive(:new).with(non_github_user.token)
 
         visit '/dashboard'
         expect(page).to_not have_content(non_github_user.first_name)
@@ -45,5 +43,20 @@ RSpec.describe 'Registered User' do
         expect(page).to_not have_content("Repos")
       end
     end
+
+    it 'can see subsection under Github called Followers' do 
+      VCR.use_cassette('services/get_followers') do
+      github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(github_user)
+
+      visit '/dashboard'
+      expect(page).to have_content('Followers')
+
+        within '.followers' do
+          expect(page).to have_css('#follower_handle')
+          expect(page).to have_css('.follower_link')
+        end
+      end 
+    end 
   end
 end
