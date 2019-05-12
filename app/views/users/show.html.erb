@@ -24,8 +24,7 @@
   <div class="following">
     <h1>Following</h1>
     <% facade.following.each do |f| %>
-    <li class="following-link"><%= f.link %></li>
-    <li class="following-handle"><%= f.handle %></li>
+    <p class="following-handle", id="following-link"><%= link_to f.handle, f.link %></p>
       <% end %>
   </div>
 </section>

@@ -53,7 +53,7 @@ RSpec.describe 'Registered User' do
 
            within '.following' do
             expect(page).to have_css('.following-handle')
-            expect(page).to have_css('.following-link')
+            expect(page).to have_css('#following-link')
           end
         end
     end
@@ -66,7 +66,7 @@ RSpec.describe 'Registered User' do
         expect(page).to have_css('.following')
         expect(page).to have_content("Following")
         within(first('.following')) do
-          expect(page).to have_css('.following-link')
+          expect(page).to have_css('#following-link')
         end
       end
     end
