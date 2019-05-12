@@ -13,6 +13,12 @@ class UserDashboardFacade
     end.first(5)
   end
 
+  def following
+    following_data.map do |data|
+      Following.new(data)
+    end
+  end
+
   def followers
     followers_data.map do |follower_data|
       Follower.new(follower_data)
@@ -23,6 +29,10 @@ class UserDashboardFacade
     def repos_data
       @_repos_data ||= service.get_repos
     end
+
+    def following_data
+      @_following_data ||= service.get_following
+    end 
 
     def followers_data
       @_followers_data ||= service.get_followers 

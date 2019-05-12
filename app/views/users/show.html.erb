@@ -19,6 +19,7 @@
         <%= link_to repo.name, repo.link  %><br/>
         </p>
       <% end %>
+    </section>
     </div>
     <div class="followers">
     <h1>Followers</h1>
@@ -26,6 +27,12 @@
       <p class="follower_link", id="follower_handle">
       <%= link_to follower.handle, follower.link %>
       <% end %>
+    </div>
+    <div class="following">
+      <h1>Following</h1>
+      <% facade.following.each do |f| %>
+      <p class="following-handle", id="following-link"><%= link_to f.handle, f.link %></p>
+        <% end %>
     </div>
   <% end %>
 </section>
