@@ -11,7 +11,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <% if current_user.token != nil %>
-    <section class="github_repos">
+    <div class="github_repos">
       <h1>GitHub</h1>
       <h3> <%= facade.header %></h3>
         <% facade.repos_top_five.each do |repo| %>
@@ -19,6 +19,13 @@
         <%= link_to repo.name, repo.link  %><br/>
         </p>
       <% end %>
-    </section>
+    </div>
+    <div class="followers">
+    <h1>Followers</h1>
+      <% facade.followers.each do |follower| %>
+      <p class="follower_link", id="follower_handle">
+      <%= link_to follower.handle, follower.link %>
+      <% end %>
+    </div>
   <% end %>
 </section>
