@@ -18,10 +18,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    current_user.update!(uid: user_info.uid, token: user_info.credentials.token)
+
+    redirect_to dashboard_path
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
+  def user_info
+    request.env['omniauth.auth']
+  end 
 end
