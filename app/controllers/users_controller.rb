@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(uid: user_info.uid, token: user_info.credentials.token)
+    current_user.update!(uid: user_info.uid, token: user_info.credentials.token)
 
     redirect_to dashboard_path
   end
