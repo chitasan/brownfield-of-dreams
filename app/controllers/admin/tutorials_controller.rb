@@ -3,13 +3,6 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.find(params[:id])
   end
 
-  # def create
-  # end
-
-  def new
-    @tutorial = Tutorial.new
-  end
-
   def update
     tutorial = Tutorial.find(params[:id])
     if tutorial.update(tutorial_params)
