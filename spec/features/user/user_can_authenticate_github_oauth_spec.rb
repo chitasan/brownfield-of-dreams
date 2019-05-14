@@ -36,5 +36,5 @@ RSpec.describe 'A Registered User' do
         expect(page).to have_css('.repo-link', count: 5)
       end 
     end 
-  end 
+  end
 end 
