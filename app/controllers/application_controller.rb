@@ -18,7 +18,4 @@ class ApplicationController < ActionController::Base
   def current_admin?
     current_user && current_user.admin?
   end
-  # def four_oh_four
-  #   raise ActionController::RoutingError.new('Not Found')
-  # end
 end
