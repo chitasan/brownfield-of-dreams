@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update!(uid: user_info.uid, token: user_info.credentials.token)
+    current_user.update(uid: user_info.uid, token: user_info.credentials.token)
 
     redirect_to dashboard_path
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
   end
 
   def user_info
