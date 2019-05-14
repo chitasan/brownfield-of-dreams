@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]
       resources :videos, only:[:show]
+      namespace :users do
+        get '/:id/friends/:recipient_id', to: 'friends#show'
+      end
     end
   end
 
