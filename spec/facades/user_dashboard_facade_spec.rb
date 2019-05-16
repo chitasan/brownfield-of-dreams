@@ -41,7 +41,7 @@ RSpec.describe 'UserDashboardFacade' do
         github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         facade = UserDashboardFacade.new(github_user)
         
-        expect(facade.followers.count).to eq(3)
+        expect(facade.followers.count).to eq(4)
       end 
     end 
   end 
