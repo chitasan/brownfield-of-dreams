@@ -37,8 +37,6 @@ RSpec.describe 'A Registered User' do
       end 
     end 
   end
-end 
-
 
   describe 'with token' do 
     it 'does not need to authenticate with Github OAuth', :vcr do 
