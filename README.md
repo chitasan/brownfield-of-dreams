@@ -44,7 +44,7 @@ $ brew install yarn
 $ yarn add stimulus
 ```
 
-* If there is a yarn error
+If there is a yarn error **
 ```
 $ rm yarn.lock && yarn
 ```
@@ -62,10 +62,6 @@ $ rails s
 ```
 
 On browser, go to `http://localhost:3000/`
-
-The following is a screenshot of the landing page: 
-
-![landing](Screen%20Shot%202019-04-10%20at%205.05.21%20PM.png)
 
 ## Testing
 
@@ -88,7 +84,7 @@ To use as a regular use, please register and connect to your GitHub account.
 
 * Ruby 2.4.1
 * Rails 5.2.0
-* PostgreSQL 11.2 
+* PostgreSQL 11.2
 
 ## Contributors
 
