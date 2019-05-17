@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
-
-    render locals: { facade: UserDashboardFacade.new(current_user)}
+    render locals: { 
+      facade: UserDashboardFacade.new(current_user),
+      bookmarked_tutorials: current_user.show_bookmarked_tutorials }
   end
 
   def new
