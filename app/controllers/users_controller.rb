@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     render locals: { 
-      facade: UserDashboardFacade.new(current_user), bookmarked_tutorials: current_user.show_bookmarked_tutorials }
+      facade: UserDashboardFacade.new(current_user),
+      bookmarked_tutorials: current_user.show_bookmarked_tutorials }
   end
 
   def new
@@ -33,5 +34,5 @@ class UsersController < ApplicationController
 
   def user_info
     request.env['omniauth.auth']
-  end 
+  end
 end

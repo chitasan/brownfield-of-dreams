@@ -22,8 +22,30 @@ class UserDashboardFacade
   def followers
     followers_data.map do |follower_data|
       Follower.new(follower_data)
-    end 
-  end 
+    end
+  end
+
+  def friends
+    # binding.pry
+    conn = Faraday.new(ENV["FRIENDSHIP_SITE"])
+    response = conn.get("api/v1/friendships?initiator_id=#{@current_user.uid}")
+    results = JSON.parse(response.body)
+    results.map do |user_id|
+      User.find_by_uid(user_id)
+    end
+  end
+
+  def in_database(follower)
+    in_db = followers_data.map do |follower|
+      User.find_by_uid(follower[:id])
+    end
+    if follower.uid
+      # "#{link_to} Add Friend, /friendships?initiator_id=#{@current_user.uid}&#{follower.uid}, method: post"
+      # <%= <a href="/friendships?initiator_id=#{@current_user.uid}&#{follower.uid}"> Add Friend </a> %>
+       "/friendships?initiator_id=#{@current_user.uid}&recipient_id=#{follower.uid}"
+    end
+  end
+
 
   private
     def repos_data
@@ -32,10 +54,10 @@ class UserDashboardFacade
 
     def following_data
       @_following_data ||= service.get_following
-    end 
+    end
 
     def followers_data
-      @_followers_data ||= service.get_followers 
+      @_followers_data ||= service.get_followers
     end
 
     def service
