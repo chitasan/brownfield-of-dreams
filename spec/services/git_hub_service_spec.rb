@@ -14,7 +14,7 @@ RSpec.describe 'GitHubService' do
         github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         service = GitHubService.new(github_user)
       
-        repos = service.get_repos
+        repos = service.repos
    
         expect(repos.first).to have_key(:name)
         expect(repos.first).to have_key(:html_url)
@@ -28,7 +28,7 @@ RSpec.describe 'GitHubService' do
         github_user = create(:user, token: ENV["CHI_USER_TOKEN"])
         service = GitHubService.new(github_user)
       
-        followers = service.get_followers
+        followers = service.followers
    
         expect(followers.first).to have_key(:login)
         expect(followers.first).to have_key(:html_url)

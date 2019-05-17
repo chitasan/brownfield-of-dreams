@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UserDashboardFacade
   def initialize(current_user)
-    @current_user  = current_user
+    @current_user = current_user
   end
 
   def header
@@ -22,23 +24,24 @@ class UserDashboardFacade
   def followers
     followers_data.map do |follower_data|
       Follower.new(follower_data)
-    end 
-  end 
+    end
+  end
 
   private
-    def repos_data
-      @_repos_data ||= service.get_repos
-    end
 
-    def following_data
-      @_following_data ||= service.get_following
-    end 
+  def repos_data
+    @_repos_data ||= service.repos
+  end
 
-    def followers_data
-      @_followers_data ||= service.get_followers 
-    end
+  def following_data
+    @_following_data ||= service.following
+  end
 
-    def service
-      @_service ||= GitHubService.new(@current_user.token)
-    end
+  def followers_data
+    @_followers_data ||= service.followers
+  end
+
+  def service
+    @_service ||= GitHubService.new(@current_user.token)
+  end
 end
