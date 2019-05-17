@@ -5,15 +5,15 @@ class GitHubService
     @token = token
   end
 
-  def get_repos
+  def repos
     get_json("user/repos")
   end
 
-  def get_following
+  def following
     get_json("/user/following")
   end
 
-  def get_followers
+  def followers
     get_json("user/followers")
   end
 
@@ -28,6 +28,6 @@ class GitHubService
 
   def get_json(url)
     response = github_conn.get(url)
-    data = JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)
   end
 end

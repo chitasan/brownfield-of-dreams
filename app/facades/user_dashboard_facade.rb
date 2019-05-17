@@ -30,15 +30,15 @@ class UserDashboardFacade
   private
 
   def repos_data
-    @_repos_data ||= service.get_repos
+    @_repos_data ||= service.repos
   end
 
   def following_data
-    @_following_data ||= service.get_following
+    @_following_data ||= service.following
   end
 
   def followers_data
-    @_followers_data ||= service.get_followers
+    @_followers_data ||= service.followers
   end
 
   def service
