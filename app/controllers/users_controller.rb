@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
-    render locals: { facade: UserDashboardFacade.new(current_user)}
+    render locals: {facade: UserDashboardFacade.new(current_user)}
   end
 
   def new
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      flash[:error] = 'Username already exists'
+      flash[:error] = "Username already exists"
       render :new
     end
   end
@@ -31,6 +33,6 @@ class UsersController < ApplicationController
   end
 
   def user_info
-    request.env['omniauth.auth']
-  end 
+    request.env["omniauth.auth"]
+  end
 end
