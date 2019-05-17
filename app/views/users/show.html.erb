@@ -4,7 +4,7 @@
   <%= button_to 'Connect to GitHub', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  
+
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -27,7 +27,10 @@
     <h1>Followers</h1>
       <% facade.followers.each do |follower| %>
       <p class="follower_link", id="follower_handle">
-      <%= link_to follower.handle, follower.link %>
+        <%=  link_to follower.handle, follower.link %>
+        <% if defined?(follower) %>
+        <a href=<%=  facade.in_database(follower)   %>> Add Friend </a>
+        <% end %>
       <% end %>
     </div>
     <div class="following">
@@ -37,4 +40,12 @@
         <% end %>
     </div>
   <% end %>
+  <div class="friends">
+    <h1>Friends</h1>
+      <% facade.friends.each do |f| %>
+      <div class="friend">
+        <p class="friend-name"><%= f.first_name %>, <%= f.last_name %></p>
+      </div>
+      <% end %>
+  </div>
 </section>
