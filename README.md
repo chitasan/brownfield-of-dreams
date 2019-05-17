@@ -2,8 +2,7 @@
 
 ## About
 
-This is a paired project while students at Turing School of Software and
-Design's Backend Engineering program. The aim of the project is to use the following skills:
+This is a paired project while students at Turing School of Software and Design's Backend Engineering program. The aim of the project is to use the following skills:
 
 - Advanced database queries and manipulation using ActiveRecord and SQL 
 - Build on an existing code base and work with technical debt
