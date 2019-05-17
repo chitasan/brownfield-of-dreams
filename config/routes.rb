@@ -42,4 +42,5 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: 'github_login'
   get '/auth/:provider/callback', to: 'users#update'
+  get '/activations', to: 'activations#edit'
 end

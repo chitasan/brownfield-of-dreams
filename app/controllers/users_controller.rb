@@ -9,13 +9,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
     if user.save
-      session[:user_id] = user.id
-      redirect_to dashboard_path
+      create_user
     else
-      flash[:error] = 'Username already exists'
-      render :new
+      error
     end
   end
 
@@ -27,11 +24,33 @@ class UsersController < ApplicationController
 
   private
 
+  def user
+    @user ||= User.create(user_params)
+  end
+
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
   end
 
   def user_info
     request.env['omniauth.auth']
-  end 
+  end
+
+  def create_user
+    user = User.create(user_params)
+    session[:user_id] = user.id
+    flash[:success] = "Logged in as #{user.first_name}"
+    flash[:notice] = 'This account has not yet been activated. Please check your email.'
+
+    ActivationMailer.account_activation(current_user).deliver_now
+
+    redirect_to dashboard_path
+  end
+
+  def error
+    flash[:error] = 'Username already exists'
+    @user = user
+    
+    render :new
+  end
 end
