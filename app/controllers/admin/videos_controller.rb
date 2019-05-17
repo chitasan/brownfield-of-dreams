@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::VideosController < Admin::BaseController
   def edit
     @video = Video.find(params[:video_id])
@@ -17,7 +19,7 @@ class Admin::VideosController < Admin::BaseController
       video.save
 
       flash[:success] = "Successfully created video."
-    rescue # Sorry about this. We should get more specific instead of swallowing all errors.
+    rescue StandardError # Sorry about this. We should get more specific instead of swallowing all errors.
       flash[:error] = "Unable to create video."
     end
 
@@ -29,4 +31,5 @@ class Admin::VideosController < Admin::BaseController
     def video_params
       params.require(:video).permit(:title, :description, :video_id, :thumbnail, :position)
     end
+
 end

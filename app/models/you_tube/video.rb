@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module YouTube
   class Video
     attr_reader :thumbnail
 
-    def initialize(data = {})
+    def initialize(data={})
       @thumbnail = data[:items].first[:snippet][:thumbnails][:high][:url]
     end
 
