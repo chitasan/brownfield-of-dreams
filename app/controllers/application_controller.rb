@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :find_bookmark, :list_tags, :tutorial_name, :current_admin?
+  helper_method :current_user,
+                :find_bookmark,
+                :list_tags,
+                :tutorial_name,
+                :current_admin?
 
   add_flash_types :success
 

@@ -6,5 +6,5 @@ class Following
   def initialize(data)
     @link = data[:html_url]
     @handle = data[:login]
- end
+  end
 end
