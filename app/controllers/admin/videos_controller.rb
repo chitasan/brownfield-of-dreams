@@ -2,14 +2,14 @@
 
 module Admin
   class VideosController < BaseController
-    def edit
-      @video = Video.find(params[:video_id])
-    end
+    # def edit
+    #   @video = Video.find(params[:video_id])
+    # end
 
-    def update
-      video = Video.find(params[:id])
-      video.update!(video_params)
-    end
+    # def update
+    #   video = Video.find(params[:id])
+    #   video.update!(video_params)
+    # end
 
     def create
       begin
@@ -24,7 +24,8 @@ module Admin
         flash[:success] = "Successfully created video."
       rescue StandardError # Sorry about this.
         # We should get more specific instead of swallowing all errors.
-        flash[:error] = "Unable to create video."
+        # flash[:error] = "Unable to create video." 
+        # Need to test this
       end
 
       redirect_to edit_admin_tutorial_path(id: tutorial.id)
