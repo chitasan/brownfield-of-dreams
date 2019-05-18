@@ -10,9 +10,10 @@ class UserDashboardFacade
   end
 
   def repos_top_five
-    repos_data.map do |repo_data|
+    top_repos = repos_data.map do |repo_data|
       Repo.new(repo_data)
-    end.first(5)
+    end
+    top_repos.first(5)
   end
 
   def following
@@ -30,18 +31,18 @@ class UserDashboardFacade
   private
 
   def repos_data
-    @_repos_data ||= service.repos
+    @repos_data ||= service.repos
   end
 
   def following_data
-    @_following_data ||= service.following
+    @following_data ||= service.following
   end
 
   def followers_data
-    @_followers_data ||= service.followers
+    @followers_data ||= service.followers
   end
 
   def service
-    @_service ||= GitHubService.new(@current_user.token)
+    @service ||= GitHubService.new(@current_user.token)
   end
 end

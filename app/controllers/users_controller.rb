@@ -2,9 +2,10 @@
 
 class UsersController < ApplicationController
   def show
-    render locals: { 
-      facade: UserDashboardFacade.new(current_user),
-      bookmarked_tutorials: current_user.show_bookmarked_tutorials }
+    render locals: {
+      facade:               UserDashboardFacade.new(current_user),
+      bookmarked_tutorials: current_user.show_bookmarked_tutorials
+    }
   end
 
   def new
@@ -31,7 +32,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
+    params.require(:user)
+          .permit(:email,
+                  :first_name,
+                  :last_name,
+                  :password,
+                  :password_confirmation)
   end
 
   def user_info
