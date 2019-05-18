@@ -38,11 +38,11 @@ class UserDashboardFacade
   end
 
   def in_database(follower)
-    in_db = followers_data.map do |follower|
+    followers_data.map do |follower|
       User.find_by_uid(follower[:id])
     end
     if follower.uid
-       "/friendships?initiator_id=#{@current_user.uid}&recipient_id=#{follower.uid}"
+      "/friendships?initiator_id=#{@current_user.uid}&recipient_id=#{follower.uid}"
     end
   end
 
